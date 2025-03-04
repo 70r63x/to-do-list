@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <div (click)="isChecked()">
+    <h1 [ngStyle]="{'text-decoration':decoration}" style="font-size: 35px;">{{taskItem?.title}}</h1>
+    <p style="font-size: 10px;">{{taskItem?.dateini}} / {{taskItem?.datefin}}</p>
+  </div>
+  <p class="mx-4">{{taskItem?.content}}</p>
+  <span class="example-spacer"></span>
+  <button mat-icon-button (click)="deleteMe()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>

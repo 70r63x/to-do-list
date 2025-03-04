@@ -1,0 +1,33 @@
+<div class="container">
+  <form [formGroup]="inputForm" (ngSubmit)="handleSubmit(inputForm?.value)">
+    <div class="row">
+      <div class="col my-auto">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Tarea</mat-label>
+          <input matInput formControlName="title" type="text" name="title" id="title" placeholder="Tarea" required>
+        </mat-form-field>
+      </div>
+      <div class="col my-auto">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Descripcion</mat-label>
+          <input matInput formControlName="content" type="text" name="content" id="content" placeholder="Descripcion" required>
+        </mat-form-field>
+      </div>
+      <div class="col my-auto">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Fecha Inicio</mat-label>
+          <input matInput formControlName="dateini" type="text" name="dateini" id="dateini" placeholder="ingrese fecha inico" required>
+        </mat-form-field>
+      </div>
+      <div class="col my-auto">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Fecha Fin</mat-label>
+          <input matInput formControlName="datefin" type="text" name="datefin" id="datefin" placeholder="ingrese fecha fin" required>
+        </mat-form-field>
+      </div>
+      <div class="col my-auto">
+        <button class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </form>
+</div>

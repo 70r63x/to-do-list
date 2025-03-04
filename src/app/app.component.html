@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>To Do list</h2>
+      </div>
+      <div class="col offset-md-4">
+        <app-install-app></app-install-app>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 my-3">
+        <app-task-form [tasks]="tasks"></app-task-form>
+      </div>
+      <div class="col my-2">
+        <h1 *ngIf="tasks.length === 0">No hay tareas disponibles<br>¡Agrega una nueva!</h1>
+        <app-task *ngFor="let taskItem of tasks" [taskItem]="taskItem" (delete)="deleteTask($event)"></app-task>
+      </div>
+    </div>
+  </div>
+</section>
+<mat-toolbar color="primary" class="fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <p>Todos los derechos reservados | Prueba Tecnica Developer Front Senior II | Lucasian Labs SAS 2025</p>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
