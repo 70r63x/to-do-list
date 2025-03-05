@@ -10,9 +10,15 @@ import { SyncService } from 'src/app/services/sync.service';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent implements OnInit {
-
+  
+  /**
+   * variable stado del form
+   */
   public status: string = 'success';
-
+  
+  /**
+   * FormGrup de formualrio de tareas
+   */
   public inputForm: FormGroup = new FormGroup({
     content: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
@@ -20,15 +26,26 @@ export class TaskFormComponent implements OnInit {
     datefin: new FormControl('', Validators.required)
   });
 
-
+  /**
+   * variable array, lista de tareas compartido por componentes
+   */
   @Input()
   tasks!: Task[];
 
-
+  /**
+   * @ignore
+   */
   constructor(private db: ApiClientService, private syncService: SyncService) { }
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {}
 
+  /**
+   * OnSubmit para validar formulario y envio de datos
+   * @param {Task} input datos del formulario ingresados
+   */
   handleSubmit(input: Task): void {
     if (this.inputForm.invalid) {
       this.status = 'warning';

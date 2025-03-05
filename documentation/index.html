@@ -1,0 +1,295 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>todo_list documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">todo_list documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>To Do List PWA</h1>
+<p>Esta es una aplicación de lista de tareas desarrollada como una Progressive Web App (PWA) utilizando Angular 13. El proyecto sigue el principio <strong>Offline-First</strong>, permitiendo al usuario gestionar tareas (crear, actualizar, eliminar) sin conexión y sincronizar los cambios con una API externa cuando se recupere la conectividad.</p>
+<h2>Propósito del Desarrollo</h2>
+<p>El objetivo de este proyecto es demostrar la capacidad de:</p>
+<ul>
+<li>Implementar una PWA usando Angular y su Service Worker nativo.</li>
+<li>Gestionar datos sin conexión mediante IndexedDB con la biblioteca <em>idb</em>.</li>
+<li>Sincronizar datos con una API externa (simulada con JSONPlaceholder) al detectar la reconexión.</li>
+<li>Ofrecer una experiencia de instalación personalizada mediante el manejo del evento <code>beforeinstallprompt</code>.</li>
+<li>Aplicar buenas prácticas en arquitectura, rendimiento y experiencia de usuario.</li>
+</ul>
+<h2>Arquitectura y Diseño</h2>
+<p>La solución se compone de los siguientes componentes y servicios:</p>
+<ul>
+<li><p><strong>Angular App (PWA):</strong></p>
+<ul>
+<li>Contiene los componentes principales, como el formulario de tareas (<code>TaskFormComponent</code>), la lista de tareas y el componente de instalación (<code>app-install</code>).</li>
+</ul>
+</li>
+<li><p><strong>Service Worker (Angular):</strong></p>
+<ul>
+<li>Se configura mediante <code>ngsw-config.json</code> para precargar y cachear el app shell y los activos críticos.</li>
+<li><em>Nota:</em> El Service Worker se activa únicamente en producción.</li>
+</ul>
+</li>
+<li><p><strong>IndexedDB (idb):</strong></p>
+<ul>
+<li>Se utiliza para almacenar localmente las tareas a través del servicio <code>ApiClientService</code>.</li>
+</ul>
+</li>
+<li><p><strong>SyncService:</strong></p>
+<ul>
+<li>Detecta el evento <code>online</code> y sincroniza automáticamente las tareas no sincronizadas con la API externa.</li>
+</ul>
+</li>
+<li><p><strong>API Externa (JSONPlaceholder):</strong></p>
+<ul>
+<li>Se utiliza para simular operaciones CRUD en la sincronización, demostrando la lógica de sincronización.</li>
+</ul>
+</li>
+</ul>
+<h2>Abordaje de Requerimientos</h2>
+<h3>1. Configuración como PWA</h3>
+<ul>
+<li><strong>Manifest.json:</strong><ul>
+<li>Se configuró el archivo <code>manifest.webmanifest</code> con nombre, iconos y propiedades para la instalación.</li>
+</ul>
+</li>
+<li><strong>Service Worker:</strong><ul>
+<li>Se utiliza el Service Worker nativo de Angular, configurado en <code>ngsw-config.json</code>.</li>
+<li>Se define la estrategia de precarga y cacheo de recursos críticos.</li>
+</ul>
+</li>
+<li><strong>Decisión de Diseño:</strong><ul>
+<li>Se optó por el SW nativo de Angular, eliminando la necesidad de integrar herramientas externas como Workbox.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Manejo de Datos sin Conexión</h3>
+<ul>
+<li><strong>Almacenamiento en IndexedDB:</strong><ul>
+<li>Implementado a través del servicio <code>ApiClientService</code> utilizando la biblioteca <em>idb</em>.</li>
+</ul>
+</li>
+<li><strong>Detección de Conectividad:</strong><ul>
+<li>Se implementó en el <code>AppComponent</code> utilizando el evento <code>online</code> para disparar la sincronización.</li>
+</ul>
+</li>
+<li><strong>Sincronización con API Externa:</strong><ul>
+<li>El servicio <code>SyncService</code> recorre las tareas no sincronizadas y las sincroniza con JSONPlaceholder.</li>
+</ul>
+</li>
+<li><strong>Decisión de Diseño:</strong><ul>
+<li>Se diferenciaron las operaciones para tareas nuevas (sin ID) y existentes (con ID) para actualizar la persistencia.</li>
+</ul>
+</li>
+</ul>
+<h3>3. Habilitar la Instalación de la PWA</h3>
+<ul>
+<li><strong>Botón de Instalación y Evento beforeinstallprompt:</strong><ul>
+<li>Se creó el componente <code>app-install-app</code> que maneja el evento <code>beforeinstallprompt</code> y muestra un botón para la instalación.</li>
+</ul>
+</li>
+<li><strong>Decisión de Diseño:</strong><ul>
+<li>Se personalizó la experiencia de instalación, permitiendo al usuario instalar la app según su conveniencia.</li>
+</ul>
+</li>
+</ul>
+<h3>4. Funcionalidades Extra (Opcional)</h3>
+<ul>
+<li><strong>Notificaciones Push:</strong><ul>
+<li>Pendiente de implementación. Se contempla agregar notificaciones usando Firebase Cloud Messaging o la Web Push API en una siguiente iteración.</li>
+</ul>
+</li>
+</ul>
+<h2>Instalación y Uso</h2>
+<h3>Requisitos</h3>
+<ul>
+<li>Node.js y npm instalados.</li>
+<li>Angular CLI instalado globalmente.</li>
+</ul>
+<h3>Instalación</h3>
+<ol>
+<li>Clona el repositorio:<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone https://github.com/70r63x/to-do-list.git
+cd to-do-list</code></pre></div></li>
+</ol>
+<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 13.3.6.</p>
+<h2>Development server</h2>
+<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The application will automatically reload if you change any of the source files.</p>
+<h2>Code scaffolding</h2>
+<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
+<h2>Build</h2>
+<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.</p>
+<h2>Running unit tests</h2>
+<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
+<h2>Running end-to-end tests</h2>
+<p>Run <code>ng e2e</code> to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.</p>
+<h2>Further help</h2>
+<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

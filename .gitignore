@@ -43,5 +43,6 @@ Thumbs.db
 .vs
 .angular
 node_modules
+documentation
 package-lock.json
 .nvmrc

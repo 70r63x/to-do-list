@@ -11,16 +11,29 @@ import { Task } from '../../models/tasks';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-
+  
+  /**
+   * datos de tarea
+   */
   @Input() taskItem?: Task;
+  /**
+   * Datos de tarea eliminada
+   */
   @Output() delete: EventEmitter<Task> = new EventEmitter();
 
-
-  public status: string = '';
+  /**
+   * decorador de texto tarea
+   */
   public decoration: string = 'none';
-
+  
+  /**
+   * @ignore
+   */
   constructor(private db: ApiClientService) { }
 
+  /**
+   * Eliminar tarea
+   */
   deleteMe() {
     if (this.taskItem) {
       this.db.deleteTask(this.taskItem).then((oldTask) => {
@@ -29,7 +42,11 @@ export class TaskComponent implements OnInit {
       );
     }
   }
-
+  
+  /**
+   * Verificar tarea completa
+   * @param {boolean} isDone verdadero o falso para validar tarea completada
+   */
   strike(isDone: boolean) {
     if (isDone) {
       this.decoration = "line-through";
@@ -38,7 +55,10 @@ export class TaskComponent implements OnInit {
     }
 
   }
-
+  
+  /**
+   * Completar tarea
+   */
   isChecked() {
     if (this.taskItem) {
       const newTask = Object.assign({}, this.taskItem);
@@ -50,7 +70,10 @@ export class TaskComponent implements OnInit {
       });
     }
   }
-
+  
+  /**
+   * Inicializador para verificar tarea completada
+   */
   ngOnInit(): void {
     if (this.taskItem) this.strike(this.taskItem.isDone);
   };

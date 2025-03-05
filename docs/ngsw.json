@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1741143464059,
+  "timestamp": 1741150216353,
   "index": "C:/Program Files/Git/to-do-list/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "C:/Program Files/Git/to-do-list/favicon.ico",
         "C:/Program Files/Git/to-do-list/index.html",
-        "C:/Program Files/Git/to-do-list/main.8d09f7cfa05373af.js",
+        "C:/Program Files/Git/to-do-list/main.b6c024a40ff47d80.js",
         "C:/Program Files/Git/to-do-list/manifest.webmanifest",
         "C:/Program Files/Git/to-do-list/polyfills.a151bed753c7da9d.js",
         "C:/Program Files/Git/to-do-list/runtime.01fec06f14767966.js",
         "C:/Program Files/Git/to-do-list/scripts.39129e36e9910771.js",
-        "C:/Program Files/Git/to-do-list/styles.a52b441fbb493d24.css"
+        "C:/Program Files/Git/to-do-list/styles.168ae5ed0d2fcf09.css"
       ],
       "patterns": []
     },
@@ -68,13 +68,13 @@
     "C:/Program Files/Git/to-do-list/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "C:/Program Files/Git/to-do-list/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "C:/Program Files/Git/to-do-list/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "C:/Program Files/Git/to-do-list/index.html": "34a5c8e8a96b8bfa4e649f03c8b9300f2d3a7e1c",
-    "C:/Program Files/Git/to-do-list/main.8d09f7cfa05373af.js": "21dcf0efe570b3dc288a3b9354698c25da3c3e12",
+    "C:/Program Files/Git/to-do-list/index.html": "7bad72a22ced7ac70c4044b1bb526fbbb1f16933",
+    "C:/Program Files/Git/to-do-list/main.b6c024a40ff47d80.js": "6c53b47e8734a45773d8cfbf4b29b5f7d6745046",
     "C:/Program Files/Git/to-do-list/manifest.webmanifest": "82562a904e0dfc6fe1e4867ee8a6a2df331ee588",
     "C:/Program Files/Git/to-do-list/polyfills.a151bed753c7da9d.js": "e5e6f826a7452517a49d3faef9183399cc0a9cbd",
     "C:/Program Files/Git/to-do-list/runtime.01fec06f14767966.js": "80fe647261b5c1e6d77e34291f024ee992a02341",
     "C:/Program Files/Git/to-do-list/scripts.39129e36e9910771.js": "bba559102a28e5f55d14dbe0ff552c4050e28ad9",
-    "C:/Program Files/Git/to-do-list/styles.a52b441fbb493d24.css": "f4f7e4e0d96070c33b41414fd4d4bfbc985e025d"
+    "C:/Program Files/Git/to-do-list/styles.168ae5ed0d2fcf09.css": "08f4dc74a32e449ad9b4bb330e0872088f56e255"
   },
   "navigationUrls": [
     {

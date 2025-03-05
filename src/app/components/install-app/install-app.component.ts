@@ -6,14 +6,26 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./install-app.component.css']
 })
 export class InstallAppComponent implements OnInit {
-
+  
+  /**
+   * variable para prompt de instalar app
+   */
   deferredPrompt: any;
 
+  /**
+   * @ignore
+   */
   constructor() { }
-
+  
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
   }
-
+  
+  /**
+   * Hotlistener para verificar instlacion de app pwa
+   */
   @HostListener('window:beforeinstallprompt', ['$event'])
   onBeforeInstallPrompt(event: Event) {
     // Prevenir el prompt automático y guardar el evento para usarlo más tarde
@@ -21,7 +33,10 @@ export class InstallAppComponent implements OnInit {
     this.deferredPrompt = event;
     console.log('Evento beforeinstallprompt capturado');
   }
-
+  
+  /**
+   * Se instala la app pwa por medio del prompt
+   */
   installPWA() {
     if (this.deferredPrompt) {
       // Mostrar el prompt al usuario

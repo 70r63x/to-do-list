@@ -2,16 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiClientService } from './api-client.service';
 import { Task } from '../models/tasks';
+import { environment } from '../../environments/environment';
 
+/**
+   * Servicio para gestionar conexion API externa
+   */
 @Injectable({
   providedIn: 'root'
 })
 export class SyncService {
-
-  private apiUrl = 'https://jsonplaceholder.typicode.com/todos';
-
+  /**
+   * Variable de api servidor
+   */
+  private apiUrl = environment.api+"/todos";
+  
+  /**
+   * @ignore
+   */
   constructor(private http: HttpClient, private apiClient: ApiClientService) {}
-
+  
+  /**
+   * Servicio de validacion y verificacion para sincronizar tareas online
+   */
   syncTasks(): void {
     this.apiClient.getUnsyncedTasks().then((tasks: Task[]) => {
       tasks.forEach(task => {
