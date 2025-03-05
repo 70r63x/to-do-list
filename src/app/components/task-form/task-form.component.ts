@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiClientService } from '../../services/api-client.service';
 import { Task } from '../../models/tasks';
+import { SyncService } from 'src/app/services/sync.service';
 
 @Component({
   selector: 'app-task-form',
@@ -24,23 +25,35 @@ export class TaskFormComponent implements OnInit {
   tasks!: Task[];
 
 
-  constructor(private db: ApiClientService) { }
+  constructor(private db: ApiClientService, private syncService: SyncService) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   handleSubmit(input: Task): void {
-    if (this.inputForm.get('content')?.invalid) {
+    if (this.inputForm.invalid) {
       this.status = 'warning';
-    } else if (input.content) {
-      this.db.addTask(input)
-        .then((id: string) => {
-          this.status = 'success';
-          input._id = id;
-          this.tasks.push(input);
-          this.inputForm.reset();
-        });
+      return;
     }
+
+    // Agregar la tarea en IndexedDB (marca synced = false automáticamente)
+    this.db.addTask(input)
+      .then((id: string) => {
+        this.status = 'success';
+        input._id = id;
+        this.tasks.push(input);
+        this.inputForm.reset();
+
+        // Si está en línea, intenta sincronizar inmediatamente la tarea
+        if (navigator.onLine) {
+          console.log('En línea: sincronizando tarea de inmediato...');
+          this.syncService.syncTasks();
+        } else {
+          console.log('Sin conexión: la tarea se sincronizará cuando se recupere la conexión.');
+        }
+      })
+      .catch(err => {
+        console.error('Error al agregar la tarea en IndexedDB:', err);
+        this.status = 'error';
+      });
   }
 }

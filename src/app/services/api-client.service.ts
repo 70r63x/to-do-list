@@ -29,6 +29,7 @@ export class ApiClientService {
 
   addTask = async function (task: Task) {
     task.isDone = false;
+    task.synced = false;
     const id = (await db).add('taskStore', task);
     return id;
   };
@@ -44,5 +45,14 @@ export class ApiClientService {
   toggleTask = async function (task: Task) {
     (await db).put('taskStore', task);
     return task;
+  };
+
+  getUnsyncedTasks = async function (): Promise<Task[]> {
+    const allTasks = await (await db).getAll('taskStore');
+    return allTasks.filter(task => !task.synced);
+  };
+
+  updateTask = async function (task: Task) {
+    await (await db).put('taskStore', task);
   };
 }

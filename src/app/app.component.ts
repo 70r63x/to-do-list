@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Task } from './models/tasks';
 import { ApiClientService } from './services/api-client.service';
+import { SyncService } from './services/sync.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent {
   title = 'To Do List';
   public tasks: Task[] = [];
 
-  constructor(private db: ApiClientService) {
+  constructor(private db: ApiClientService, private syncService: SyncService) {
 
   }
 
@@ -23,6 +24,11 @@ export class AppComponent {
   ngOnInit(): void {
     this.db.getAll().then((tasks) => {
       this.tasks = tasks;
+    });
+
+    window.addEventListener('online', () => {
+      console.log('Conexión recuperada, iniciando sincronización...');
+      this.syncService.syncTasks();
     });
   }
 

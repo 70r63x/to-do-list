@@ -32,7 +32,7 @@
     {
       "name": "api-tasks",
       "urls": [
-        "https://tu-api.com/api/tasks/**"
+        "https://jsonplaceholder.typicode.com/**"
       ],
       "cacheConfig": {
         "strategy": "freshness",

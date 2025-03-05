@@ -1,0 +1,98 @@
+{
+  "configVersion": 1,
+  "timestamp": 1741143464059,
+  "index": "C:/Program Files/Git/to-do-list/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "C:/Program Files/Git/to-do-list/favicon.ico",
+        "C:/Program Files/Git/to-do-list/index.html",
+        "C:/Program Files/Git/to-do-list/main.8d09f7cfa05373af.js",
+        "C:/Program Files/Git/to-do-list/manifest.webmanifest",
+        "C:/Program Files/Git/to-do-list/polyfills.a151bed753c7da9d.js",
+        "C:/Program Files/Git/to-do-list/runtime.01fec06f14767966.js",
+        "C:/Program Files/Git/to-do-list/scripts.39129e36e9910771.js",
+        "C:/Program Files/Git/to-do-list/styles.a52b441fbb493d24.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-128x128.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-144x144.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-152x152.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-192x192.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-384x384.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-512x512.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-72x72.png",
+        "C:/Program Files/Git/to-do-list/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-tasks",
+      "patterns": [
+        "https:\\/\\/jsonplaceholder\\.typicode\\.com\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 50,
+      "maxAge": 3600000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "C:/Program Files/Git/to-do-list/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "C:/Program Files/Git/to-do-list/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "C:/Program Files/Git/to-do-list/index.html": "34a5c8e8a96b8bfa4e649f03c8b9300f2d3a7e1c",
+    "C:/Program Files/Git/to-do-list/main.8d09f7cfa05373af.js": "21dcf0efe570b3dc288a3b9354698c25da3c3e12",
+    "C:/Program Files/Git/to-do-list/manifest.webmanifest": "82562a904e0dfc6fe1e4867ee8a6a2df331ee588",
+    "C:/Program Files/Git/to-do-list/polyfills.a151bed753c7da9d.js": "e5e6f826a7452517a49d3faef9183399cc0a9cbd",
+    "C:/Program Files/Git/to-do-list/runtime.01fec06f14767966.js": "80fe647261b5c1e6d77e34291f024ee992a02341",
+    "C:/Program Files/Git/to-do-list/scripts.39129e36e9910771.js": "bba559102a28e5f55d14dbe0ff552c4050e28ad9",
+    "C:/Program Files/Git/to-do-list/styles.a52b441fbb493d24.css": "f4f7e4e0d96070c33b41414fd4d4bfbc985e025d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
