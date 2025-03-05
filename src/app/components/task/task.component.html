@@ -1,11 +1,15 @@
-<mat-toolbar color="primary">
-  <div (click)="isChecked()">
+<mat-toolbar color="primary" class="py-2 my-2">
+  <div (click)="isChecked()" role="button">
     <h1 [ngStyle]="{'text-decoration':decoration}" style="font-size: 35px;">{{taskItem?.title}}</h1>
-    <p style="font-size: 10px;">{{taskItem?.dateini}} / {{taskItem?.datefin}}</p>
+    <p style="font-size: 10px;" class="mb-0">{{taskItem?.dateini}} / {{taskItem?.datefin}}</p>
   </div>
-  <p class="mx-4">{{taskItem?.content}}</p>
+  <p class="mx-4">
+    {{taskItem?.content}}<br>
+    <span class="mx-3"><span *ngIf="taskItem?.isDone">Completada</span><span *ngIf="!taskItem?.isDone">En Proceso</span></span>
+  </p>
+<!--   <p class="mx-3"><span *ngIf="taskItem?.synced">Sincronizada</span><span *ngIf="!taskItem?.synced">Local</span></p> -->
+  <!-- <p class="mx-3"><span *ngIf="taskItem?.isDone">Completada</span><span *ngIf="!taskItem?.isDone">En Proceso</span></p> -->
   <span class="example-spacer"></span>
-  <button mat-icon-button (click)="deleteMe()">
-    <mat-icon>close</mat-icon>
-  </button>
+  <mat-icon role="button" (click)="deleteMe()">close</mat-icon>
+
 </mat-toolbar>
