@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Diagrama de funcionalidad",
+        "file": "diagrama-funcionalidad.md"
+    },
+    {
+        "title": "Diagrama arquitectura PWA",
+        "file": "diagrama-arquitectura-pwa.md"
+    },
+    {
+        "title": "Diagrama flujo de sincronizacion",
+        "file": "diagrama-flujo-sincronizacion.md"
+    },
+    {
+        "title": "Diagrama Base de Datos",
+        "file": "diagrama-db.md"
+    }
+]
